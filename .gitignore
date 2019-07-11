@@ -1,0 +1,10 @@
+!.gitkeep
+.DS_Store
+Thumbs.db
+node_modules
+gin-bin
+gin-bin.exe
+*.db
+docker/*/volumes
+vendor
+.vscode/

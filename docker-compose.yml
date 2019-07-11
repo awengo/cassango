@@ -1,0 +1,22 @@
+version: '3'
+services:
+  cassango:
+    container_name: cassango
+    build:
+      context: .
+      dockerfile: ./docker/cassango/Dockerfile
+    volumes:
+      - ./_samples:/opt/go/src/sample
+      - ./:/opt/go/src/github.com/awengo/cassango
+    depends_on:
+      - cassandra
+    links:
+      - cassandra
+    tty: true
+  cassandra:
+    container_name: cassandra
+    image: cassandra:latest
+    volumes:
+      - ./docker/cassandra/volumes/data:/var/lib/cassandra/data
+    ports:
+      - '9042:9042'
